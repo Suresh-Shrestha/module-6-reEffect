@@ -1,19 +1,12 @@
-import { useState } from "react";
 
-const Goals = ({ headerTitle, description, suggestedEntry, buttonLabel }) => {
-const [myGoal, setMyGoal] = useState();
-
-const handleClick = () => {
-setMyGoal(document.getElementById("goal").value);
-};
+import List from "./List";
+const Goals = ({ headerTitle, description, suggestedEntry, buttonLabel }) => { 
 
 return (
 <div>
 <h2>{headerTitle}</h2>
-<h3>{myGoal}</h3>
 <p>{description}</p>
-<input id="goal" name="goal" placeholder={suggestedEntry} />
-<button onClick={handleClick}>{buttonLabel}</button>
+<List listTitle="My top Goals" placeholderText="enter goals" buttonLabel={buttonLabel} Listdescriptin="Here is my list of goals:"></List>
 </div>
 );
 };
