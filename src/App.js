@@ -10,7 +10,7 @@ function App() {
   return (
    <div className="App">
     <PersonalInfo
-headerTitle="Personal Information"
+headerTitle="About Me"
 name="Suresh"
 photo={{ me: photo, width: '150px' }}
 description="I am a passionate developer who loves coding and building applications."

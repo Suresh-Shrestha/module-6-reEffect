@@ -1,45 +1,52 @@
-import userEvent from '@testing-library/user-event';
+import React, { useState, useRef } from 'react';
 import './List.css'
-import React, {useState, useRef} from 'react'
-function List ({
-    listTitle = 'myList',
-    placeholderText = 'enter an item',
-    buttonLabel = 'add item',
-    Listdescriptin = 'item',
-}){
-    const listInput = useRef(null)
-    const [listObject, setListObject] = useState({
-        listEntries: [],
-        listItem: []
-    })
-    const handleAddItem = () => {
-        const currentListEntries = [
-            ...listObject.listEntries,
-            listInput.current.value
-        ]
-        const currentListItem = currentListEntries.map((entry) => (
-            <li key ={currentListEntries.indexOf(entry)}> {entry}</li>
-        ))
-        setListObject({
-            listEntries: currentListEntries,
-            listItem: currentListItem
-        })
-        listInput.current.value = "";
-    }
-    return(
-        <div>
-            
-<h3>{listTitle}</h3>
+const List = ({
+listTitle = "My List",
+placeholderText = "Put top goals here",
+buttonLabel = "Add",
+Listdescriptin = "This is my list of goals.",
+clearButtonLabel = "Clear List",
+emptyInputAlert = "Textbox cannot be empty!",
+emptyListAlert = "There are no items to clear!",
+}) => {
+const [items, setItems] = useState([]);
+const listInput = useRef(null);
 
-<input placeholder={placeholderText} ref={listInput}></input>
-
-<button onClick={handleAddItem}>{buttonLabel}</button>
-
-<h4>{ Listdescriptin}</h4>
-
-<ol>{listObject.listItem}</ol>
-
-        </div>
-    );
+const handleAdd = () => {
+const value = listInput.current.value.trim();
+if (!value) {
+alert(emptyInputAlert);
+return;
 }
+setItems([...items, value]);
+listInput.current.value = '';
+listInput.current.focus();
+};
+
+const handleClear = () => {
+if (items.length === 0) {
+alert(emptyListAlert);
+return;
+}
+setItems([]);
+listInput.current.value = '';
+listInput.current.focus();
+};
+
+return (
+<div>
+<h3>My top goals</h3>
+<input type="text" ref={listInput} placeholder={placeholderText} class='inputData'/>
+<button onClick={handleAdd}class='AddButton'>{buttonLabel}</button>
+<button onClick={handleClear}class='removeBotton'>{clearButtonLabel}</button>
+<p>{Listdescriptin}</p>
+<ul>
+{items.map((item, i) => (
+<li key={i}>{item}</li>
+))}
+</ul>
+</div>
+);
+};
+
 export default List;

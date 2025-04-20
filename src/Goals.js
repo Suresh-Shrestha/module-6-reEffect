@@ -1,14 +1,18 @@
+import React from 'react';
+import List from './List';
 
-import List from "./List";
-const Goals = ({ headerTitle, description, suggestedEntry, buttonLabel }) => { 
-
+function Goals() {
 return (
 <div>
-<h2>{headerTitle}</h2>
-<p>{description}</p>
-<List listTitle="My top Goals" placeholderText="enter goals" buttonLabel={buttonLabel} Listdescriptin="Here is my list of goals:"></List>
+<h3>My Goals</h3>
+<p>This are goals I'd like to achieve in the next year</p>
+<List
+clearButtonLabel="Clear"
+emptyInputAlert="Please type a goal before adding!"
+emptyListAlert="There are no goals to clear!"
+/>
 </div>
 );
-};
+}
 
 export default Goals;
