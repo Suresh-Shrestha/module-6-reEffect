@@ -1,5 +1,6 @@
-import React, { useState, useRef } from 'react';
-import './List.css'
+import React, { useState, useRef, useEffect } from 'react';
+import './List.css';
+
 const List = ({
 listTitle = "My List",
 placeholderText = "Put top goals here",
@@ -11,8 +12,17 @@ emptyListAlert = "There are no items to clear!",
 }) => {
 const [items, setItems] = useState([]);
 const listInput = useRef(null);
+const listRef = useRef(null);
 
-const handleAdd = () => {
+useEffect(() => {
+console.log("🟡 List updated:", items);
+
+if (listRef.current) {
+listRef.current.scrollIntoView({ behavior: 'smooth' });
+}
+}, [items]);
+
+const handleAdd = () => {w3qaw1qa
 const value = listInput.current.value.trim();
 if (!value) {
 alert(emptyInputAlert);
@@ -35,12 +45,12 @@ listInput.current.focus();
 
 return (
 <div>
-<h3>My top goals</h3>
-<input type="text" ref={listInput} placeholder={placeholderText} class='inputData'/>
-<button onClick={handleAdd}class='AddButton'>{buttonLabel}</button>
-<button onClick={handleClear}class='removeBotton'>{clearButtonLabel}</button>
+<h3>{listTitle}</h3>
+<input type="text" ref={listInput} placeholder={placeholderText} className='inputData' />
+<button onClick={handleAdd} className='AddButton'>{buttonLabel}</button>
+<button onClick={handleClear} className='removeBotton'>{clearButtonLabel}</button>
 <p>{Listdescriptin}</p>
-<ul>
+<ul ref={listRef}>
 {items.map((item, i) => (
 <li key={i}>{item}</li>
 ))}
