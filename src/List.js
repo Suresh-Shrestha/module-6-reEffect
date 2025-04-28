@@ -22,7 +22,7 @@ listRef.current.scrollIntoView({ behavior: 'smooth' });
 }
 }, [items]);
 
-const handleAdd = () => {w3qaw1qa
+const handleAdd = () => {
 const value = listInput.current.value.trim();
 if (!value) {
 alert(emptyInputAlert);

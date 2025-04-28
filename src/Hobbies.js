@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import UserContext from './UserContext';
 
-function Hobbies({ headerTitle, description }) {
+function Hobbies() {
+const { hobbies } = useContext(UserContext);
+
 return (
 <div>
-<h3>{headerTitle}</h3>
-<p>{description}</p>
+<h2>{hobbies.headerTitle}</h2>
+<p>{hobbies.description}</p>
 </div>
 );
 }

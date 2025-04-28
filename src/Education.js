@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import UserContext from './UserContext';
 
-function Education({ headerTitle, description }) {
+function Education() {
+const { education } = useContext(UserContext);
+
 return (
 <div>
-<h3>{headerTitle}</h3>
-<p>{description}</p>
+<h2>{education.headerTitle}</h2>
+<p>{education.description}</p>
 </div>
 );
 }

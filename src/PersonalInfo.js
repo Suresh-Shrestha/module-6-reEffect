@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import UserContext from './UserContext';
 
-function PersonalInfo({ headerTitle, name, photo, description }) {
+function PersonalInfo() {
+const { about } = useContext(UserContext);
+
 return (
 <div>
-<h3>{headerTitle}</h3>
-<h3>{name}</h3>
-<img src={photo.me} width={photo.width} alt={"photo of " + name} />
-<p>{description}</p>
+<h1>{about.headerTitle}</h1>
+<img src={about.photo.me} alt="myself" style={{ width: about.photo.width }} />
+<p>{about.description}</p>
 </div>
 );
 }
