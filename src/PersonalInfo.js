@@ -2,7 +2,8 @@ import React, { useContext } from 'react';
 import UserContext from './UserContext';
 
 function PersonalInfo() {
-const { about } = useContext(UserContext);
+    const { userData, setUserData } = useContext(UserContext);
+const { about } = userData;
 
 return (
 <div>

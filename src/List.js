@@ -1,6 +1,6 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useContext } from 'react';
 import './List.css';
-
+import UserContext from './UserContext';
 const List = ({
 listTitle = "My List",
 placeholderText = "Put top goals here",
@@ -13,7 +13,8 @@ emptyListAlert = "There are no items to clear!",
 const [items, setItems] = useState([]);
 const listInput = useRef(null);
 const listRef = useRef(null);
-
+const { userData, setUserData } = useContext(UserContext);
+const { goals } = userData;
 useEffect(() => {
 console.log("🟡 List updated:", items);
 
@@ -29,6 +30,32 @@ alert(emptyInputAlert);
 return;
 }
 setItems([...items, value]);
+setUserData(prev => ({
+    about: {
+    headerTitle: prev.about.headerTitle,
+    name: prev.about.name,
+    photo: {
+    me: prev.about.photo.me,
+    width: prev.about.photo.width
+    },
+    description: prev.about.description
+    },
+    education: {
+    headerTitle: prev.education.headerTitle,
+    description: prev.education.description
+    },
+    hobbies: {
+    headerTitle: prev.hobbies.headerTitle,
+    description: prev.hobbies.description
+    },
+    goals: {
+    headerTitle: prev.goals.headerTitle,
+    description: prev.goals.description,
+    suggestedEntry: prev.goals.suggestedEntry,
+    buttonLabel: prev.goals.buttonLabel,
+    totalGoalsAdded: prev.goals.totalGoalsAdded + 1 // <-- only change here
+    }
+    }));
 listInput.current.value = '';
 listInput.current.focus();
 };

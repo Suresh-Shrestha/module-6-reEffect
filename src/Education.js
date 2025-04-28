@@ -2,7 +2,8 @@ import React, { useContext } from 'react';
 import UserContext from './UserContext';
 
 function Education() {
-const { education } = useContext(UserContext);
+    const { userData, setUserData } = useContext(UserContext);
+const { education } = userData
 
 return (
 <div>

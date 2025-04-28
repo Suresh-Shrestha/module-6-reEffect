@@ -2,7 +2,8 @@ import React, { useContext } from 'react';
 import UserContext from './UserContext';
 
 function Hobbies() {
-const { hobbies } = useContext(UserContext);
+    const { userData, setUserData } = useContext(UserContext);
+const { hobbies } = userData;
 
 return (
 <div>
