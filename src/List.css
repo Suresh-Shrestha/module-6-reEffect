@@ -1,14 +1,15 @@
 input {
   padding: 5px;
   font-size: 14px;
-  border: none;
+  border: 1px solid var(--border-color);
   width: 300px;
   border-radius: 7px;
+  background-color: var(--background-color);
+  color: var(--text-color);
 }
 
-
 input:focus {
-  outline: none;
+  outline: 1px solid var(--primary-color);
 }
 
 button {
@@ -18,10 +19,14 @@ button {
   font-family: inherit;
   cursor: pointer;
   margin-left: 5px;
+  background-color: var(--primary-color);
+  color: white;
 }
+
 button:hover {
-  background-color: #ffffff;
+  background-color: var(--secondary-color);
 }
+
 button:focus,
 button:focus-visible {
   outline: none;
@@ -47,5 +52,28 @@ li {
   margin-bottom: 5px;
   white-space: pre;
   text-align: left;
+  color: var(--text-color);
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 4px;
+  transition: background-color 0.2s;
 }
-.inputData{width: 300px!important;}
+
+li:hover {
+  background-color: var(--border-color);
+}
+
+li.completed {
+  text-decoration: line-through;
+  opacity: 0.7;
+}
+
+.inputData {
+  width: 300px !important;
+}
+
+.timer-display {
+  font-size: 24px;
+  margin: 10px 0;
+  color: var(--text-color);
+}

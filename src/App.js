@@ -8,6 +8,7 @@ import logo from './logo.svg';
 import logoINFO from './logoINFO.png';
 import photo from './myPhoto.png';
 import UserContext from './UserContext';
+import useTheme from './hooks/useTheme';
 
 function App() {
   const [userData, setUserData] = useState({
@@ -34,21 +35,26 @@ function App() {
     }
     });
 
-return (
-<UserContext.Provider value={{userData, setUserData}}>
-<div className="App">
-<PersonalInfo />
-<Education />
-<Hobbies />
-<Goals />
+  const { theme, toggleTheme } = useTheme();
 
-<header className="App-header">
-<img src={logoINFO} className="infoLogo" alt="xlogo" />
-<img src={logo} className="reactLogo" alt="logo" />
-</header>
-</div>
-</UserContext.Provider>
-);
+  return (
+    <UserContext.Provider value={{userData, setUserData}}>
+      <div className="App">
+        <button className="theme-toggle" onClick={toggleTheme}>
+          {theme === 'light' ? '🌙 Dark Mode' : '☀️ Light Mode'}
+        </button>
+        <PersonalInfo />
+        <Education />
+        <Hobbies />
+        <Goals />
+
+        <header className="App-header">
+          <img src={logoINFO} className="infoLogo" alt="xlogo" />
+          <img src={logo} className="reactLogo" alt="logo" />
+        </header>
+      </div>
+    </UserContext.Provider>
+  );
 }
 
 export default App;
