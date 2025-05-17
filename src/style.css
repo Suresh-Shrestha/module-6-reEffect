@@ -1,0 +1,73 @@
+body {
+    font-family: sans-serif;
+    background: #f2f2f2;
+    margin: 0;
+    padding: 20px;
+    transition: background 0.3s;
+}
+
+body.dark {
+    background: #121212;
+    color: white;
+}
+
+.app {
+    max-width: 500px;
+    margin: auto;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+}
+
+form input, form select, form button {
+    display: block;
+    margin: 10px 0;
+    width: 100%;
+    padding: 8px;
+}
+
+.transaction-list {
+    list-style: none;
+    padding: 0;
+}
+
+.transaction {
+    display: flex;
+    justify-content: space-between;
+    margin: 6px 0;
+}
+
+.transaction.income {
+    color: green;
+}
+
+.transaction.expense {
+    color: red;
+}
+
+.theme-toggle {
+    float: right;
+    margin-bottom: 10px;
+    padding: 6px 12px;
+}
+body.dark .app {
+    background-color: #1e1e1e;
+  }
+  /* Dark mode form styles */
+  body.dark input,
+  body.dark select,
+  body.dark button {
+    background-color: #333;
+    color: #f5f5f5;
+    border: 1px solid #555;
+  }
+  
+  body.dark button {
+    background-color: #444;
+    border: none;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    opacity: 0.9;
+  }
